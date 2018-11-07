@@ -1,0 +1,26 @@
+.Icon{
+  position: relative;
+  margin-top:15px;
+}
+.Iconspan{
+  position: absolute;
+  top: 50%;
+  left:15px;
+  margin-top: -11px;
+}
+.Input{
+  border-radius: 5px;
+  border: 1px solid #ccc ;
+  outline: 0;
+  padding:0 40px;
+  box-sizing: border-box;
+}
+
+.focus{
+  border: 1px solid rgba(255, 165, 0 , 0.5);
+  padding: 10px;
+}
+.verif{
+  padding: 0 10px;
+  cursor: pointer;
+}
