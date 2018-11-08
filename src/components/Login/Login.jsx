@@ -2,6 +2,7 @@ import React from 'react'
 import './styles/index.css'
 import Input from './components/Input'
 import { Link } from 'react-router-dom'
+import store from '../../Store'
 class Login extends React.Component {
   constructor(props) {
     super(props)
@@ -27,16 +28,35 @@ class Login extends React.Component {
       })
     }
   }
+
+  // 输入框失去焦点
+  blur = () => {
+    console.log('blur获取父级方法成功')
+  }
+  focus = () => {
+    console.log('focus获取父级方法成功')
+  }
+
   screenChange = () => {
     window.addEventListener('resize', this.resize)
   }
 
   handleBtn = (e) => {
     e.preventDefault()
-    console.log(123)
+    store.isLogin = true
+
+    if (store.isLogin) {
+      this.props.history.push('/Product')
+    }
   }
-  componentDidMount() {
-    this.screenChange()
+  componentWillMount() {
+    // 页面加载后开始监控缩放
+    ;(async () => {
+      await this.screenChange()
+      if (store.isLogin) {
+        this.props.history.push('/Product')
+      }
+    })()
   }
 
   render() {
@@ -60,12 +80,36 @@ class Login extends React.Component {
         <div className="Right">
           <div className="header">
             <span style={{ fontSize: '18px', color: '#ccc' }}>登录</span>
-            <Link to='/Home' style={{color:'#fff',textDecoration:'none'}}> <span style={{ fontSize: '12px', color: '#aaa' }}>产品导航</span></Link>
+            <Link to="/Home" style={{ color: '#fff', textDecoration: 'none' }}>
+              {' '}
+              {/*  <--  */}
+              <span style={{ fontSize: '12px', color: '#aaa' }}>产品导航</span>
+            </Link>
           </div>
           <div className="main">
-            <Input width={'270px'} height={'35px'} Icon={'icon-wode'} placeholder={'用户'} />
-            <Input width={'270px'} height={'35px'} Icon={'icon-mima'} placeholder={'密码'} />
-            <Input width={'200px'} height={'35px'} Icon={'icon-shezhi'} placeholder={'验证码'} isVerif={true} />
+            <Input
+              style={{ width: '270px', height: '35px' }}
+              Icon={'icon-wode'}
+              placeholder={'用户'}
+              blur={this.blur}
+              focus={this.focus}
+            />
+            <Input
+              style={{ width: '270px', height: '35px' }}
+              Icon={'icon-mima'}
+              placeholder={'密码'}
+              type={'password'}
+              blur={this.blur}
+              focus={this.focus}
+            />
+            <Input
+              style={{ width: '200px', height: '35px' }}
+              Icon={'icon-shezhi'}
+              placeholder={'验证码'}
+              isVerif={true}
+              blur={this.blur}
+              focus={this.focus}
+            />
             <a href="#" className="btn" onClick={this.handleBtn}>
               登录
             </a>

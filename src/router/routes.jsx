@@ -1,6 +1,6 @@
 import Login from '../components/Login'
 import Home from '../components/Home'
-
+import Product from '../components/Product'
 const routes = [
   {
     path:'/Home',
@@ -9,6 +9,10 @@ const routes = [
   {
     path:'/Login',
     component:Login
+  },
+  {
+    path:'/Product',
+    component:Product
   }
 ]
 

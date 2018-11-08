@@ -15,11 +15,15 @@
   padding:0 40px;
   box-sizing: border-box;
 }
-
-.focus{
-  border: 1px solid rgba(255, 165, 0 , 0.5);
+.noIcon{
+  border: 1px solid #ccc ;
   padding: 10px;
 }
+.focus{
+  border: 1px solid rgba(255, 165, 0 , 0.5) ;
+  padding: 10px;
+}
+
 .verif{
   padding: 0 10px;
   cursor: pointer;
