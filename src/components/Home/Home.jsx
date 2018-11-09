@@ -22,7 +22,7 @@ const Home = observer(
             <div>
               <Link to="/Home">首页</Link>
               {store.isLogin ? (
-                <Link to="/Home" onClick={this.regist}>
+                <Link to="/Login" onClick={this.regist}>
                   注销
                 </Link>
               ) : (
